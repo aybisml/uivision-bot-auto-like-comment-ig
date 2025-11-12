@@ -1,0 +1,180 @@
+{
+  "Name": "uivision bot auto like komen ig",
+  "CreationDate": "2025-11-12",
+  "Commands": [
+    {
+      "Command": "csvRead",
+      "Target": "links.csv",
+      "Value": "",
+      "Description": "Baca daftar link postingan (kolom pertama CSV)"
+    },
+    {
+      "Command": "open",
+      "Target": "${!COL1}",
+      "Value": "",
+      "Description": "Buka postingan sesuai link pada baris CSV saat ini"
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return Math.floor(Math.random()*2000)+1500;",
+      "Value": "waitBeforeLike",
+      "Description": "Buat jeda random antara 1.5–3.5 detik sebelum klik Like"
+    },
+    {
+      "Command": "pause",
+      "Target": "${waitBeforeLike}",
+      "Value": "",
+      "Description": "Tunggu sesuai waktu acak sebelum klik Like"
+    },
+    {
+      "Command": "XClick",
+      "Target": "ufnsrk_dpi_96.png",
+      "Value": "",
+      "Description": "Klik tombol Like"
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return Math.floor(Math.random()*4000)+2000;",
+      "Value": "waitBeforeComment",
+      "Description": "Buat jeda random antara 2–6 detik sebelum mulai komentar"
+    },
+    {
+      "Command": "pause",
+      "Target": "${waitBeforeComment}",
+      "Value": "",
+      "Description": "Tunggu sesuai waktu acak sebelum mengetik komentar"
+    },
+    {
+      "Command": "XClick",
+      "Target": "thb8zx_dpi_96.png",
+      "Value": "",
+      "Description": "Klik kolom komentar"
+    },
+    {
+      "Command": "csvRead",
+      "Target": "komentar.csv",
+      "Value": "",
+      "Description": "Baca file komentar (kolom pertama berisi teks komentar)"
+    },
+    {
+      "Command": "XType",
+      "Target": "${!COL1}",
+      "Value": "",
+      "Description": "Ketik komentar"
+    },
+    {
+      "Command": "XType",
+      "Target": "${KEY_ENTER}",
+      "Value": "",
+      "Description": "Kirim komentar"
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return Math.floor(Math.random()*5000)+3000;",
+      "Value": "waitAfterComment",
+      "Description": "Buat jeda random antara 3–8 detik setelah komentar dikirim"
+    },
+    {
+      "Command": "pause",
+      "Target": "${waitAfterComment}",
+      "Value": "",
+      "Description": "Tunggu waktu acak sebelum lanjut ke posting berikutnya"
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return Math.floor(Math.random()*3)+2;",
+      "Value": "scrollMod",
+      "Description": "Tentukan setiap berapa sesi akan melakukan scroll acak"
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "if (Number('${!LOOP}') % Number('${scrollMod}') === 0) { return true; } else { return false; }",
+      "Value": "doScroll",
+      "Description": "Tentukan apakah saat ini waktu untuk scroll"
+    },
+    {
+      "Command": "gotoIf_v2",
+      "Target": "${doScroll} == false",
+      "Value": "#skipScroll",
+      "Description": "Jika bukan saatnya scroll, lompat ke label skipScroll"
+    },
+    {
+      "Command": "open",
+      "Target": "https://www.instagram.com/",
+      "Value": "",
+      "Description": "Buka halaman utama Instagram sebelum scroll"
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return Math.floor(Math.random()*4000)+3000;",
+      "Value": "waitLoadHome",
+      "Description": "Waktu acak 3–7 detik untuk load beranda"
+    },
+    {
+      "Command": "pause",
+      "Target": "${waitLoadHome}",
+      "Value": "",
+      "Description": "Tunggu sampai halaman Instagram benar-benar terbuka"
+    },
+    {
+      "Command": "XMove",
+      "Target": "500,400",
+      "Value": "",
+      "Description": "Gerakkan mouse ke tengah layar (biar natural)"
+    },
+    {
+      "Command": "XClick",
+      "Target": "jmkweo_dpi_96.png",
+      "Value": "",
+      "Description": "KLIK BERANDA LOGO INSTAGRAM AGAR PAGE DOWN BERJALAN"
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return Math.floor(Math.random()*3)+2",
+      "Value": "scrollTimes",
+      "Description": "Tentukan berapa kali akan scroll (2–4 kali)"
+    },
+    {
+      "Command": "times",
+      "Target": "${scrollTimes}",
+      "Value": "",
+      "Description": "Loop scroll sesuai jumlah acak"
+    },
+    {
+      "Command": "XType",
+      "Target": "${KEY_PAGE_DOWN}",
+      "Value": "",
+      "Description": "Scroll ke bawah satu layar"
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return Math.floor(Math.random()*2000)+1000;",
+      "Value": "scrollPause",
+      "Description": "Buat jeda acak antar scroll (1–3 detik)"
+    },
+    {
+      "Command": "pause",
+      "Target": "${scrollPause}",
+      "Value": "",
+      "Description": "Tunggu sebelum lanjut scroll lagi"
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": "Akhir dari loop scroll"
+    },
+    {
+      "Command": "label",
+      "Target": "#skipScroll",
+      "Value": "",
+      "Description": "Label akhir kalau tidak perlu scroll"
+    },
+    {
+      "Command": "open",
+      "Target": "https://www.instagram.com/p/Cs3Cy_UOdAm",
+      "Value": "",
+      "Description": ""
+    }
+  ]
+}
